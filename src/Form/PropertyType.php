@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Property;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -21,29 +22,29 @@ class PropertyType extends AbstractType
             ->add('description', TextareaType::class, [
                 'label' => 'Description'
             ])
-            ->add('surface', null, [
+            ->add('surface', IntegerType::class, [
                 'label' => 'Surface en m2'
             ])
-            ->add('rooms', null, [
+            ->add('rooms', IntegerType::class, [
                 'label' => 'Pièces'
             ])
-            ->add('bedrooms', null, [
+            ->add('bedrooms', IntegerType::class, [
                 'label' => 'Chambres'
             ])
             ->add('floor', null, [
                 'label' => 'Etages'
             ])
-            ->add('price', null, [
+            ->add('price', IntegerType::class, [
                 'label' => 'Prix'
             ])
             ->add('heat', ChoiceType::class, [
                 'label' => 'Type de chauffage',
                 'choices' => $this->getChoices()
             ])
-            ->add('city', null, [
+            ->add('city', TextType::class, [
                 'label' => 'Ville'
             ])
-            ->add('address', null, [
+            ->add('address', TextType::class, [
                 'label' => 'Adresse'
             ])
             ->add('postal_code', null, [

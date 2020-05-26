@@ -6,6 +6,7 @@ use App\Repository\PropertyRepository;
 use Cocur\Slugify\Slugify;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=PropertyRepository::class)
@@ -28,26 +29,32 @@ class Property
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $title;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Assert\NotBlank
      */
     private $description;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Range(min=10, max=700, minMessage="Le bien doit faire au minimum {{ limit }}m²", maxMessage="Le bien
+     *      doit faire au maximum {{ limit }}m²")
      */
     private $surface;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\GreaterThanOrEqual(1)
      */
     private $rooms;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\GreaterThanOrEqual(1)
      */
     private $bedrooms;
 
@@ -58,6 +65,7 @@ class Property
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\GreaterThanOrEqual(0)
      */
     private $price;
 
