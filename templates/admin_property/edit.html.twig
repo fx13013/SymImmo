@@ -1,0 +1,35 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Editer le bien{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h2>Editer le bien {{property.title}}</h2>
+
+        {{ form_start(propertyForm) }}
+
+        <div class="row">
+            <div class="col-md-4">{{ form_row(propertyForm.title) }}</div>
+            <div class="col-md-4">{{ form_row(propertyForm.surface) }}</div>
+            <div class="col-md-4">{{ form_row(propertyForm.price) }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">{{ form_row(propertyForm.rooms) }}</div>
+            <div class="col-md-2">{{ form_row(propertyForm.bedrooms) }}</div>
+            <div class="col-md-2">{{ form_row(propertyForm.heat) }}</div>
+            <div class="col-md-2">{{ form_row(propertyForm.floor) }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">{{ form_row(propertyForm.address) }}</div>
+            <div class="col-md-2">{{ form_row(propertyForm.city) }}</div>
+            <div class="col-md-2">{{ form_row(propertyForm.postal_code) }}</div>
+            <div class="col-md-2">{{ form_row(propertyForm.sold) }}</div>
+        </div>
+        {{ form_widget(propertyForm) }}
+
+        <button type="submit" class="btn btn-primary">Modifier</button>
+
+        {{ form_end(propertyForm) }}
+
+    </div>
+{% endblock %}
