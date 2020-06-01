@@ -3,6 +3,25 @@
 {% block title %}Acheter un bien{% endblock %}
 
 {% block body %}
+    <div class="jumbotron">
+        <div class="container">
+            {{ form_start(searchForm) }}
+            <div class="form-row align-items-end">
+                <div class="col">
+                    {{ form_row(searchForm.minSurface) }}
+                </div>
+                <div class="col">
+                    {{ form_row(searchForm.maxPrice) }}
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <button class="btn btn-primary">Rechercher</button>
+                    </div>
+                </div>
+            </div>
+            {{ form_end(searchForm) }}
+        </div>
+    </div>
     <div class="container mt-3">
         <h1 class="mt-3">Liste des biens</h1>
 
