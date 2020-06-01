@@ -47,10 +47,11 @@ class AppFixtures extends Fixture
                 ->setBedrooms($faker->numberBetween(1, 3))
                 ->setFloor($faker->numberBetween(0, 5))
                 ->setPrice($faker->numberBetween(50000, 600000))
-                ->setHeat($faker->numberBetween(0, 3))
+                ->setHeat($faker->numberBetween(0, \count(Property::HEAT) - 1))
                 ->setCity($faker->city)
                 ->setAddress($faker->address)
                 ->setPostalCode($faker->postcode)
+                ->setSold(false)
                 ->setCreatedAt($faker->dateTimeBetween('- 4 years'));
 
             $manager->persist($property);
