@@ -1,5 +1,8 @@
 <div class="card mb-4">
     <div class="card-body">
+        {% if property.filename %}
+            <img src="{{ property.filename }}" alt="" class="card-img-top" style="width:100% ; height: auto;">
+        {% endif %}
         <h5 class="card-title">
             <a href="{{ path('property_show', {'id': property.id, 'slug': property.slug}) }}">{{ property.title }}</a>
         </h5>

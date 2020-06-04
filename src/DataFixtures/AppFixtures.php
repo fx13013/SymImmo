@@ -2,11 +2,12 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Property;
+use Faker\Factory;
 use App\Entity\User;
+use App\Entity\Property;
+use Bluemmb\Faker\PicsumPhotosProvider;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
-use Faker\Factory;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class AppFixtures extends Fixture
@@ -21,6 +22,7 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $faker = Factory::create('fr_FR');
+        $faker->addProvider(new PicsumPhotosProvider($faker));
 
         $admin = new User();
         $admin->setFullName('John Doe')
@@ -52,7 +54,8 @@ class AppFixtures extends Fixture
                 ->setAddress($faker->address)
                 ->setPostalCode($faker->postcode)
                 ->setSold(false)
-                ->setCreatedAt($faker->dateTimeBetween('- 4 years'));
+                ->setCreatedAt($faker->dateTimeBetween('- 4 years'))
+                ->setFilename($faker->imageUrl(200, 200, true));
 
             $manager->persist($property);
         }

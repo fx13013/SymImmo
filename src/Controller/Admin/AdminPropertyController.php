@@ -8,6 +8,7 @@ use App\Repository\PropertyRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AdminPropertyController extends AbstractController
@@ -25,7 +26,7 @@ class AdminPropertyController extends AbstractController
     }
 
     /**
-     * @Route("admin/property/edit/{id}", name="admin_property_edit")
+     * @Route("admin/property/edit/{id}", name="admin_property_edit", methods={"GET", "POST"})
      */
     public function edit(Property $property, Request $request, EntityManagerInterface $manager)
     {

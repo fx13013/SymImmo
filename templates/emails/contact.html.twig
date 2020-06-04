@@ -1,0 +1,28 @@
+<div class="container">
+    <h1>Demande de contact {{ contact.property.title }}</h1>
+    <p>Une nouvelle personne souhaiterait obtenir plus d'informations sur le bien 
+        <a href="{{url('property_show', {'id': contact.property.id, 'slug': contact.property.slug})}}">{{contact.property.title}}</a>
+    </p>
+    <table class="table">
+        <tr>
+            <td>Nom : </td>
+            <td>{{ contact.lastName }}</td>
+        </tr>
+        <tr>
+            <td>Prénom : </td>
+            <td>{{ contact.firstName }}</td>
+        </tr>
+        <tr>
+            <td>Téléphone : </td>
+            <td>{{ contact.phone }}</td>
+        </tr>
+        <tr>
+            <td>Email : </td>
+            <td>{{ contact.email }}</td>
+        </tr>
+        <tr>
+            <td>Message : </td>
+            <td>{{ contact.message }}</td>
+        </tr>
+    </table>
+</div>
