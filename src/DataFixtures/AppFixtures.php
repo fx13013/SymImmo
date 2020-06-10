@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Picture;
 use Faker\Factory;
 use App\Entity\User;
 use App\Entity\Property;
@@ -40,8 +41,10 @@ class AppFixtures extends Fixture
             $manager->persist($user);
         }
 
+
         for($p = 0; $p < 100; $p++){
             $property = new Property;
+
             $property->setTitle($faker->words(random_int(1, 5), true))
                 ->setDescription($faker->paragraphs(3, true))
                 ->setSurface($faker->numberBetween(30, 500))
@@ -54,10 +57,14 @@ class AppFixtures extends Fixture
                 ->setAddress($faker->address)
                 ->setPostalCode($faker->postcode)
                 ->setSold(false)
-                ->setCreatedAt($faker->dateTimeBetween('- 4 years'))
+                ->setCreatedAt($faker->dateTimeBetween('- 4 years'));
+
+            $picture = new Picture;
+            $picture->setProperty($property)
                 ->setFilename($faker->imageUrl(200, 200, true));
 
             $manager->persist($property);
+            $manager->persist($picture);
         }
         // $product = new Product();
         // $manager->persist($product);

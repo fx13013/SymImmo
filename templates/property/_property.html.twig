@@ -1,9 +1,9 @@
 <div class="card mb-4">
     <div class="card-body">
-        {% if property.filename matches '{.+\.jpg}' %}
-            <img src="{{ vich_uploader_asset(property, 'imageFile') }}" alt="" class="card-img-top" style="width:100% ; height: auto;">
+        {% if property.picture.filename matches '{.\.jpg}' %}
+            <img src="/images/properties/{{property.picture.filename}}" alt="" class="card-img-top" style="width:100% ; height: auto;">
         {% else %}
-            <img src="{{ property.filename }}" alt="" class="card-img-top" style="width:100% ; height: auto;">    
+            <img src="{{property.picture.filename}}" alt="" class="card-img-top" style="width:100% ; height: auto;">    
         {% endif %}
         <h5 class="card-title">
             <a href="{{ path('property_show', {'id': property.id, 'slug': property.slug}) }}">{{ property.title }}</a>

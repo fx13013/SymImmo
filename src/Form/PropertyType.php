@@ -9,6 +9,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -51,8 +52,9 @@ class PropertyType extends AbstractType
                 'choice_label' => 'name',
                 'multiple' => true
             ])
-            ->add('imageFile', FileType::class, [
+            ->add('pictureFiles', FileType::class, [
                 'required' => false,
+                'multiple' => true,
                 'label' => 'Ajouter une image',
                 'label_attr' => [
                     'data-browse' => 'Parcourir'
@@ -67,6 +69,8 @@ class PropertyType extends AbstractType
             ->add('postal_code', null, [
                 'label' => 'Code postal'
             ])
+            ->add('lat', HiddenType::class)
+            ->add('lng', HiddenType::class)
             ->add('sold', null, [
                 'label' => 'Vendu'
             ])

@@ -9,9 +9,22 @@
         {{ form_start(propertyForm) }}
 
         <div class="row">
-            <div class="col-md-4">{{ form_row(propertyForm.title) }}</div>
-            <div class="col-md-4">{{ form_row(propertyForm.surface) }}</div>
-            <div class="col-md-4">{{ form_row(propertyForm.price) }}</div>
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-4">{{ form_row(propertyForm.title) }}</div>
+                    <div class="col-md-4">{{ form_row(propertyForm.surface) }}</div>
+                    <div class="col-md-4">{{ form_row(propertyForm.price) }}</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="row flex justify-content-start flex-wrap">
+                    {% for picture in property.pictures %}
+                        <div class="col">
+                            <img src="{{ vich_uploader_asset(picture, 'imageFile') }}" alt="" width="100%">
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
         <div class="row">
             <div class="col-md-2">{{ form_row(propertyForm.rooms) }}</div>
@@ -20,11 +33,13 @@
             <div class="col-md-2">{{ form_row(propertyForm.floor) }}</div>
         </div>
         <div class="row">
-            <div class="col-md-3">{{ form_row(propertyForm.imageFile) }}</div>
-            <div class="col-md-3">{{ form_row(propertyForm.address) }}</div>
-            <div class="col-md-2">{{ form_row(propertyForm.city) }}</div>
+            <div class="col-md-8">{{ form_row(propertyForm.pictureFiles) }}</div>
+            <div class="col-md-4">{{ form_row(propertyForm.sold) }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-7">{{ form_row(propertyForm.address) }}</div>
+            <div class="col-md-3">{{ form_row(propertyForm.city) }}</div>
             <div class="col-md-2">{{ form_row(propertyForm.postal_code) }}</div>
-            <div class="col-md-2">{{ form_row(propertyForm.sold) }}</div>
         </div>
         {{ form_widget(propertyForm) }}
 

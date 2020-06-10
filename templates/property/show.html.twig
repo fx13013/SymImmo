@@ -14,18 +14,18 @@
             
             <div class="row">
                 <div class="col-md-8">
-                    {% if property.filename matches '{.+\.jpg}' %}
-                        <img src="{{ vich_uploader_asset(property, 'imageFile') }}" alt="" class="card-img-top" style="width:100% ; height: auto;">
+                    {% if property.picture.filename matches '{.\.jpg}' %}
+                        <img src="/images/properties/{{property.picture.filename}}" alt="" class="card-img-top" style="width:100% ; height: auto;">
                     {% else %}
-                        <img src="{{ property.filename }}" alt="" class="card-img-top" style="width:100% ; height: auto;">    
+                        <img src="{{property.picture.filename}}" alt="" class="card-img-top" style="width:100% ; height: auto;">    
                     {% endif %}
                 </div>
                 <div class="col-md-4">
                     <h1>{{property.title}}</h1>
                     <h2>{{property.rooms}} pièces - {{property.surface}} m2</h2>
                     <div class="text-primary" style="font-size: 3rem; font-weigth: bold">{{property.formattedPrice}} €</div>
-                    <a href="#" class="btn btn-primary">Contacter l'agence</a>
-                    <div id="contactForm" class="mt-4">
+                    <a href="#" class="btn btn-primary" id="contactButton"{% if contactForm.vars.submitted %} style="display: none;" {% endif %}>Contacter l'agence</a>
+                    <div id="contactForm" class="mt-4"{% if not contactForm.vars.submitted %} style="display: none;" {% endif %}>
                         {{ form_start(contactForm) }}
                         <div class="row">
                             <div class="col">{{ form_row(contactForm.lastName) }}</div>
