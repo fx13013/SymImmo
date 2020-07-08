@@ -16,11 +16,17 @@
                     <div class="col-md-4">{{ form_row(propertyForm.price) }}</div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="row flex justify-content-start flex-wrap">
+            <div class="col-md-4 d-flex">
+                <div class="d-flex align-items-stretch">
                     {% for picture in property.pictures %}
-                        <div class="col">
-                            <img src="{{ vich_uploader_asset(picture, 'imageFile') }}" alt="" width="100%">
+                        <div class="col d-flex flex-column">
+                            {% if urlImage(picture.filename) %}
+                                <img src="{{picture.filename}}" class="img-thumbnail" >
+                                <a href="{{path('admin_picture_delete',{id:picture.id})}}" class="btn btn-danger" data-delete data-token="{{csrf_token('delete' ~ picture.id)}}">Supprimer</a>
+                            {% else %}                               
+                                <img src="{{ vich_uploader_asset(picture, 'imageFile') }}" class="img-thumbnail">
+                                <a href="{{path('admin_picture_delete',{id:picture.id})}}" class="btn btn-danger" data-delete data-token="{{csrf_token('delete' ~ picture.id)}}">Supprimer</a>                                              
+                            {% endif %}
                         </div>
                     {% endfor %}
                 </div>

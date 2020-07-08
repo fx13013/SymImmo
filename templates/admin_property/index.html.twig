@@ -20,15 +20,20 @@
                 <tr>
                     <th>Titre</th>
                     <th></th>
-                    <th></th>
                 </tr>
             </thead>
             <tbody>
                 {% for property in properties %}
                     <tr>
                         <td>{{property.title}}</td>
-                        <td><a href="{{ path('admin_property_edit', {'id': property.id}) }}" class="btn btn-secondary">Editer</a></td>
-                        <td><a href="{{ path('admin_property_delete', {'id': property.id}) }}" class="btn btn-danger">Supprimer</a></td>
+                        <td>
+                            <a href="{{ path('admin_property_edit', {'id': property.id}) }}" class="btn btn-secondary">Editer</a>
+                            <form action="{{path('admin_property_delete', {id:property.id})}}" style="display: inline-block" method="post" onsubmit="return confirm('Etes vous sur ?')">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ property.id) }}">
+                                <button class="btn btn-danger">Supprimer</button>
+                            </form>
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>

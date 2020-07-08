@@ -72,15 +72,15 @@ class AdminPropertyController extends AbstractController
     }
 
     /**
-     * @Route("/admin/property/delete/{id}", name="admin_property_delete")
+     * @Route("/admin/property/delete/{id}", name="admin_property_delete", methods="DELETE")
      */
-    public function delete(Property $property, EntityManagerInterface $manager)
+    public function delete(Property $property, EntityManagerInterface $manager, Request $request)
     {
-        $manager->remove($property);
-        $manager->flush();
-
-        $this->addFlash('success', "Le bien a été supprimé avec succès");
-
+        if($this->isCsrfTokenValid('delete' . $property->getId(), $request->get('_token'))){
+            $manager->remove($property);
+            $manager->flush();
+            $this->addFlash('success', "Bien supprimé avec succès");
+        }
         return $this->redirectToRoute('admin_property_index');
     }
 }
