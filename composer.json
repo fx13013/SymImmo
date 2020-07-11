@@ -36,10 +36,10 @@
         "symfony/webpack-encore-bundle": "^1.7",
         "symfony/yaml": "5.0.*",
         "vich/uploader-bundle": "^1.13",
-        "fzaninotto/faker": "^1.9"
+        "fzaninotto/faker": "^1.9",
+        "bluemmb/faker-picsum-photos-provider": "^1.0"
     },
     "require-dev": {
-        "bluemmb/faker-picsum-photos-provider": "^1.0",
         "symfony/debug-pack": "*",
         "symfony/maker-bundle": "^1.0",
         "symfony/profiler-pack": "*",
