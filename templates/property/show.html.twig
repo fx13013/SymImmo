@@ -14,11 +14,15 @@
             
             <div class="row">
                 <div class="col-md-8">
-                    {% if property.picture.filename matches '{.\.jpg}' %}
-                        <img src="/images/properties/{{property.picture.filename}}" alt="" class="card-img-top" style="width:100% ; height: auto;">
-                    {% else %}
-                        <img src="{{property.picture.filename}}" alt="" class="card-img-top" style="width:100% ; height: auto;">    
-                    {% endif %}
+                    <div id="slider">
+                        {% for picture in property.pictures %}
+                            {% if picture.filename matches '{.\.jpg}' %}
+                                <img src="/images/properties/{{picture.filename}}" class="card-img-top" style="width:100% ; height: auto;">
+                            {% else %}
+                                <img src="{{picture.filename}}" class="card-img-top" style="width:100% ; height: auto;">    
+                            {% endif %}
+                        {% endfor %}
+                    </div>
                 </div>
                 <div class="col-md-4">
                     <h1>{{property.title}}</h1>
@@ -45,8 +49,7 @@
             </div>
         </div>
     </div>
-    <div class="container mt-4">
-        
+    <div class="container mt-4">     
         <p>{{property.description|nl2br}}</p>
         <div class="row">
             <div class="col-md-8">
@@ -83,5 +86,6 @@
                 </ul>
             </div>
         </div>
+        <div id="map" style="width: 100%; height: 450px" data-lat={{property.lat}} data-lng={{property.lng}}></div>
     </div>
 {% endblock %}
