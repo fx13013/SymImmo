@@ -22,7 +22,7 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-        $faker = Factor::create('fr_FR');
+        $faker = Factory::create('fr_FR');
         $faker->addProvider(new PicsumPhotosProvider($faker));
 
         $admin = new User();
