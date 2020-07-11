@@ -2,9 +2,9 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Picture;
 use Faker\Factory;
 use App\Entity\User;
+use App\Entity\Picture;
 use App\Entity\Property;
 use Bluemmb\Faker\PicsumPhotosProvider;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -22,7 +22,7 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-        $faker = Factory::create('fr_FR');
+        $faker = Factor::create('fr_FR');
         $faker->addProvider(new PicsumPhotosProvider($faker));
 
         $admin = new User();
