@@ -129,12 +129,12 @@ class Property
     private $pictureFiles;
 
     /**
-     * @ORM\Column(type="float", scale=4, precision=6)
+     * @ORM\Column(type="float", scale=4, precision=6, nullable=true)
      */
     private $lat;
 
     /**
-     * @ORM\Column(type="float", scale=4, precision=7)
+     * @ORM\Column(type="float", scale=4, precision=7, nullable=true)
      */
     private $lng;
 
